@@ -1,6 +1,5 @@
 import random
-#Step 1 
-
+#Step 1
 #TODO-1 - Randomly choose a word from the word_list and assign it to a variable called chosen_word.
 
 #TODO-2 - Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
@@ -8,7 +7,6 @@ import random
 #TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
 
 #Step 2
-
 #TODO-1: - Create an empty List called display.
 #For each letter in the chosen_word, add a "_" to 'display'.
 #So if the chosen_word was "apple", display should be ["_", "_", "_", "_", "_"] with 5 "_" representing each letter to guess.
@@ -20,21 +18,29 @@ import random
 #TODO-3: - Print 'display' and you should see the guessed letter in the correct position and every other letter replace with "_".
 #Hint - Don't worry about getting the user to guess the next letter. We'll tackle that in step 3.
 
+#Step 3
+#TODO-1: - Use a while loop to let the user guess again. The loop should only stop once the user has guessed all the letters in the chosen_word and 'display' has no more blanks ("_"). Then you can tell the user they've won.
+
 # picked_word = random.randint(0, len(word_list)-1)
 # choosen_word = word_list[picked_word]
 # OR
 word_list = ["aardvark", "baboon", "camel"]
 chosen_word = random.choice(word_list)
 print(f'Pssst, the solution is {chosen_word}.')
-guess = input("Guess a letter:\n").lower()
 word_length = len(chosen_word)
 display = []
+end_of_game = False
 
 for i in range(word_length):
     display.append("_")
+while not end_of_game:
+    guess = input("Guess a letter:\n").lower()
+    for position in range(word_length):
+        letter = chosen_word[position]
+        if guess in letter:
+            display[position] = letter
+    print(display)
 
-for position in range(word_length):
-    letter = chosen_word[position]
-    if guess in letter:
-        display[position] = letter
-print(display)
+    if "_" not in display:
+        end_of_game = True
+        print("You Win")
