@@ -111,7 +111,7 @@ while not end_of_game:
             print(f"{' '.join(display)}")
     if guess not in chosen_word:
         lives -= 1
-        print(stages[lives])
+        print(f"{' '.join(display)}")
         if lives == 0:
             end_of_game = True
             print("Game Over, You Lose")
@@ -119,3 +119,5 @@ while not end_of_game:
     if "_" not in display:
         end_of_game = True
         print("You Win")
+
+    print(stages[lives])
